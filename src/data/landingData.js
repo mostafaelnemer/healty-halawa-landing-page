@@ -35,6 +35,14 @@ export const spreadFlavors = [
   { id: 'halawaPistachio', label: 'حلاوة سبريد بالفستق',     shortLabel: 'بالفستق',     emoji: '🟢' },
   { id: 'halawaHazel',     label: 'حلاوة سبريد بالبندق',     shortLabel: 'بالبندق',     emoji: '🌰' },
   { id: 'halawaAlmond',    label: 'حلاوة سبريد باللوز',      shortLabel: 'باللوز',      emoji: '🥜' },
+  // «مربى» offers (dashboard → نوع العرض: مربى)
+  { id: 'jamStrawberry',   label: 'مربى فراولة',             shortLabel: 'فراولة',      emoji: '🍓' },
+  // «سبريد» offers (dashboard → نوع العرض: سبريد) — same jars and photos as the spread page
+  { id: 'kids',     label: 'سبريد شيكولاتة أطفال',   shortLabel: 'أطفال',   emoji: '🧒', weight: '375 جرام', image: product4 },
+  { id: 'original', label: 'سبريد شيكولاتة أوجينال', shortLabel: 'أوجينال', emoji: '🍫', weight: '375 جرام', image: product1 },
+  { id: 'protein',  label: 'سبريد شيكولاتة بروتين',  shortLabel: 'بروتين',  emoji: '💪', weight: '375 جرام', image: product2 },
+  { id: 'vegan',    label: 'سبريد شيكولاتة فيجن',    shortLabel: 'فيجن',    emoji: '🌱', weight: '375 جرام', image: product3 },
+  { id: 'prestige', label: 'سبريد شيكولاتة بريستيج', shortLabel: 'بريستيج', emoji: '👑', weight: '375 جرام', badge: '(بندق أكتر)', image: product6 },
 ];
 
 export const chocoBarFlavors = [

@@ -4,8 +4,8 @@ import { flavorWeight, unitFor, weightNote } from '../flavorCatalog.js';
 // flavor groups it saves, so a custom slug still gets the right picker, weight
 // and counters. Local landingData is only the fallback for legacy offers.
 // Groups whose pieces the customer distributes with the regular flavor picker.
-// halawaBar = halawa spread jars, chocoKeto = keto bars (simple flavors, no dark/milk split).
-const PIECE_GROUPS = ['spread', 'pasta', 'halawaBar', 'chocoKeto'];
+// halawaBar = halawa spread jars, jam = jam jars, chocoKeto = keto bars (simple flavors, no dark/milk split).
+const PIECE_GROUPS = ['spread', 'pasta', 'halawaBar', 'jam', 'chocoKeto'];
 
 function resolveConfiguration(bundle, local, units) {
   const groups = Array.isArray(bundle.flavorGroups) ? bundle.flavorGroups : [];

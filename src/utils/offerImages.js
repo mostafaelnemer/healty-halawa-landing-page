@@ -1,9 +1,5 @@
 const loaders = {
-  'two-jars':         () => import('../assets/3ard.webp'),
-  'three-jars':       () => import('../assets/3ard2.webp'),
-  'four-jars':        () => import('../assets/3ard3.webp'),
-  'choco-bar':        () => import('../assets/choclolate2.jpeg'),
-  'spread-choco-bar': () => import('../assets/choclolate.jpeg'),
+  // Add local photos per offer slug, e.g. 'four-bars': () => import('../assets/halawa-spread-four.webp'),
 };
 
 const cache = new Map();

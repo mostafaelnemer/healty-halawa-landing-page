@@ -12,6 +12,7 @@ import {
   loadCheckoutCart,
   saveCheckoutCart,
 } from './utils/checkoutSession.js';
+import { SITE, PRODUCT } from './site.js';
 
 const StepConfirm = lazy(() => import('./components/StepConfirm.jsx'));
 
@@ -44,7 +45,7 @@ function Header({ brand, nav, offers }) {
   return (
     <>
       <div className="promo-bar">
-        <span>{content.promo1 === '🚚 توصيل مجاناً' ? shippingSummary(offers, 'spread') : content.promo1}</span>
+        <span>{content.promo1 === '🚚 توصيل مجاناً' ? shippingSummary(offers, SITE) : content.promo1}</span>
         <span>•</span>
         <span>{content.promo2}</span>
         <span>•</span>
@@ -175,9 +176,9 @@ function Hero({ hero }) {
 
 function Benefits({ benefits }) {
   return (
-    <section className="section benefits-section section-below-fold" id="benefits" aria-label="ليه Healthy Spread؟">
+    <section className="section benefits-section section-below-fold" id="benefits" aria-label={`ليه ${PRODUCT.name}؟`}>
       <div className="section-intro centered">
-        <span className="eyebrow">ليه Healthy Spread؟</span>
+        <span className="eyebrow">ليه {PRODUCT.name}؟</span>
         <h2>اختيار صحي من غير ما تتنازل عن الطعم</h2>
       </div>
       <div className="benefits-band">

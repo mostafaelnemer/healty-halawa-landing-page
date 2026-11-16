@@ -34,6 +34,7 @@ import {
   saveCheckoutCart,
   saveCheckoutDraft,
 } from '../utils/checkoutSession.js';
+import { SITE, PRODUCT } from '../site.js';
 
 const ORDER_API_URL = 'https://script.google.com/macros/s/AKfycbwmCSkvnrX6Ow09kNwJXJoQvRSD-WPQvENWjsGIjSwiSewN40EjbxDmPT6P1A8kRPQl/exec';
 
@@ -265,7 +266,7 @@ export default function StepConfirm({ form, cartItems: initialItems, onBack, onS
   const totalPrice    = items.reduce((sum, item) => sum + item.offer.price    * item.qty, 0);
   const totalOriginal = items.reduce((sum, item) => sum + item.offer.originalPrice * item.qty, 0);
   const totalSaving   = totalOriginal - totalPrice;
-  const { fee: shipping, deferred } = cartShipping(items, 'spread');
+  const { fee: shipping, deferred } = cartShipping(items, SITE);
   const grandTotal    = totalPrice + shipping;
   const flavorsOk = flavorsComplete(items, itemFlavors, itemCola, itemChocoBar, itemComponents);
 
@@ -357,7 +358,7 @@ export default function StepConfirm({ form, cartItems: initialItems, onBack, onS
         phone,
         gov,
         address,
-        notes: shippingOrderNote(notes, items, 'spread'),
+        notes: shippingOrderNote(notes, items, SITE),
         bundle: buildOfferSummary(),
         flavors: buildFlavorSummary(items, itemFlavors, itemCola, itemChocoBar, itemComponents),
         quantity: String(items.reduce((s, item) => s + (offerNeedsFlavors(item.offer) || offerNeedsComponents(item.offer) ? item.offer.unitsPerPack * item.qty : item.qty), 0)),
@@ -502,7 +503,7 @@ export default function StepConfirm({ form, cartItems: initialItems, onBack, onS
           <p className="field-msg error fp-flavor-error">
             {items.some((item) => offerNeedsComponents(item.offer))
               ? 'من فضلك اختار كل مكوّنات الباندل'
-              : 'من فضلك وزّع كل البرطمانات على النكهات'}
+              : 'من فضلك وزّع كل القطع على النكهات'}
           </p>
         )}
       </div>
@@ -516,7 +517,7 @@ export default function StepConfirm({ form, cartItems: initialItems, onBack, onS
           {!deferred && (
             <div className="cart-total-row">
               <span>🚚 الشحن</span>
-              <span>{cartShippingLabel(items, 'spread')}</span>
+              <span>{cartShippingLabel(items, SITE)}</span>
             </div>
           )}
           <div className="cart-total-row cart-total-grand">

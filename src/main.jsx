@@ -2,6 +2,7 @@ import { PageContentProvider } from './PageContent.jsx'
 import React, { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
+import { SITE } from './site.js';
 import './styles.css';
 
 function initScrollReveal() {
@@ -34,7 +35,7 @@ function Root() {
     requestAnimationFrame(initScrollReveal);
   }, []);
 
-  return <PageContentProvider site="spread"><App /></PageContentProvider>;
+  return <PageContentProvider site={SITE}><App /></PageContentProvider>;
 }
 
 createRoot(document.getElementById('root')).render(<Root />);

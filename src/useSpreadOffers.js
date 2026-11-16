@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { landingData, spreadFlavors, chocoBarFlavors } from './data/landingData.js';
 import { useOffers } from './useOffers.js';
 import { mapSpreadOffer } from './utils/spreadOffers.js';
+import { SITE } from './site.js';
 
 const localById = Object.fromEntries(landingData.offers.map(offer => [offer.id, offer]));
 const LOCAL_BUNDLES = landingData.offers.map(offer => ({
@@ -14,7 +15,7 @@ const LOCAL_BUNDLES = landingData.offers.map(offer => ({
 }));
 
 export function useSpreadOffers() {
-  const { bundles, ready } = useOffers('spread', LOCAL_BUNDLES);
+  const { bundles, ready } = useOffers(SITE, LOCAL_BUNDLES);
   const offers = useMemo(() => bundles.map(bundle => mapSpreadOffer(bundle, localById[bundle.id], { spreadFlavors, chocoBarFlavors })), [bundles]);
   return { offers, ready };
 }

@@ -23,35 +23,18 @@ import barMilkPlain from '../assets/bar-milk-plain.webp';
 
 export const productImages = [product4, product1, product2, product3, product6, product7, product5, product8, product9];
 
-// Hero carousel: spread ↔ choco bar alternating so the page speaks for both
-export const heroImages = [
-  product1, barMilkHazel,
-  product4, barMilkPlain,
-  product2, barDarkPlain,
-  product3, barMilkAlmond,
-  product6, barDarkHazel,
-  barDarkAlmond,
-];
+// Hero carousel: no halawa spread photos yet — the logo is a placeholder.
+// Add the product photos to src/assets and list them here.
+export const heroImages = [logo];
 
-export const heroImageLabels = [
-  'أوجينال', 'ميلك بالبندق',
-  'أطفال', 'ميلك شيكولاتة بار',
-  'بروتين', 'ستيفيا دارك',
-  'فيجن', 'شيكولاتة باللوز',
-  'بريستيج 👑 (بندق أكتر)', 'دارك بالبندق',
-  'دارك باللوز',
-];
+export const heroImageLabels = ['Healthy Halawa Spread'];
 
 export const spreadFlavors = [
-  { id: 'kids',    label: 'سبريد شيكولاتة أطفال 375 جرام',   shortLabel: 'أطفال',          emoji: '🧒', weight: '375 جرام', image: product4 },
-  { id: 'original',label: 'سبريد شيكولاتة أوجينال 375 جرام',  shortLabel: 'أوجينال',        emoji: '🍫', weight: '375 جرام', image: product1 },
-  { id: 'protein', label: 'سبريد شيكولاتة بروتين 375 جرام',   shortLabel: 'بروتين',         emoji: '💪', weight: '375 جرام', image: product2 },
-  { id: 'vegan',   label: 'سبريد شيكولاتة فيجن 375 جرام',     shortLabel: 'فيجن',           emoji: '🌱', weight: '375 جرام', image: product3 },
-  { id: 'prestige', label: 'سبريد شيكولاتة بريستيج 375 جرام', shortLabel: 'بريستيج', emoji: '👑', weight: '375 جرام', badge: '(بندق أكتر)', featured: true, image: product6 },
-  { id: 'coconut', label: 'سبريد جوز هند 375 جرام',            shortLabel: 'جوز هند',        emoji: '🥥', weight: '375 جرام', hidden: true, image: product7 },
-  { id: 'peanut',  label: 'زبدة فول سوداني 375 جرام',         shortLabel: 'زبدة فول سوداني', emoji: '🥜', weight: '375 جرام', hidden: true, image: product5 },
-  { id: 'highProtein', label: 'زبدة فول سوداني عالي البروتين 375 جرام', shortLabel: 'زبدة فول سوداني عالي البروتين', emoji: '💪', weight: '375 جرام', hidden: true, image: product8 },
-  { id: 'chocolatePeanut', label: 'زبدة فول سوداني شيكولاتة 375 جرام', shortLabel: 'زبدة فول سوداني شيكولاتة', emoji: '🍫', weight: '375 جرام', hidden: true, image: product9 },
+  { id: 'halawaPlain',     label: 'حلاوة سبريد سادة',        shortLabel: 'سادة',        emoji: '🍯' },
+  { id: 'halawaChocolate', label: 'حلاوة سبريد بالشيكولاتة', shortLabel: 'بالشيكولاتة', emoji: '🍫' },
+  { id: 'halawaPistachio', label: 'حلاوة سبريد بالفستق',     shortLabel: 'بالفستق',     emoji: '🟢' },
+  { id: 'halawaHazel',     label: 'حلاوة سبريد بالبندق',     shortLabel: 'بالبندق',     emoji: '🌰' },
+  { id: 'halawaAlmond',    label: 'حلاوة سبريد باللوز',      shortLabel: 'باللوز',      emoji: '🥜' },
 ];
 
 export const chocoBarFlavors = [
@@ -82,139 +65,67 @@ export const landingData = {
     { label: 'اطلب الآن', href: '#offers'  },
   ],
   hero: {
-    eyebrow: 'Healthy Spread & Choco Bar 🍫',
-    title: 'استمتع بـ هيلثي سبريد وشيكولاتة بار اللي بتحبهم... بطريقة تناسب حياتك الصحية',
+    eyebrow: 'Healthy Halawa Spread 🍯',
+    title: 'حلاوة طحينية سبريد... بطريقة تناسب حياتك الصحية',
     subtitle:
-      'سبريد غني وشيكولاتة بار لذيذة من غير سكر مضاف، مناسبين للدايت والكيتو ومرضى السكر من غير ما تحرم نفسك.',
+      'حلاوة طحينية قابلة للدهن في برطمان، من غير سكر مضاف، مناسبة للدايت والكيتو ومرضى السكر.',
     primaryCta: 'اطلب دلوقتي',
     secondaryCta: 'شوف العروض',
     images: heroImages,
     labels: heroImageLabels,
     stats: [
       { value: '0%', label: 'سكر مضاف' },
-      { value: 'Keto', label: 'مناسب للدايت' },
-      { value: 'Stevia', label: 'محلى بالاستيفيا' },
+      { value: 'Keto', label: 'مناسبة للدايت' },
+      { value: 'Stevia', label: 'محلاة بالاستيفيا' },
     ],
   },
   benefits: [
-    'مناسب للدايت والكيتو',
-    'مناسب لمرضى السكر',
-    'محلى بالاستيفيا',
-    'منخفض السعرات الحرارية',
+    'مناسبة للدايت والكيتو',
+    'مناسبة لمرضى السكر',
+    'محلاة بالاستيفيا',
     'بدون سكر مضاف',
-    'خالية من الزيوت المهدرجة',
+    'غنية بالطحينة',
+    'تتدهن على العيش والتوست',
   ],
   audience: {
-    title: 'مناسب لمين؟',
-    description: 'Healthy Spread اختيار ذكي لأكتر من روتين صحي، من غير حرمان ومن غير تعقيد.',
+    title: 'مناسبة لمين؟',
+    description: 'Healthy Halawa Spread حلو لأي روتين صحي، من غير حرمان.',
     items: [
       { label: 'الرياضيين',                  icon: '🏋️' },
       { label: 'مرضى السكر',                 icon: '🩺' },
       { label: 'متبعي الكيتو دايت',           icon: '🥑' },
-      { label: 'متبعي نظام منخفض السعرات',    icon: '⚖️' },
+      { label: 'محبي الحلاوة',                icon: '🍯' },
     ],
   },
   product: {
-    title: 'طعم حلو من غير إحساس بالذنب',
-    description:
-      'سبريد غني يناسب الفطار، السناك، والحلويات الصحية. معمول عشان يديك إحساس الشوكولاتة اللي بتحبه بشكل أخف وأنسب للاستخدام اليومي.',
+    title: 'طعم الحلاوة اللي بتحبه من غير إحساس بالذنب',
+    description: 'حلاوة طحينية سبريد بنكهات مختلفة: سادة، بالشيكولاتة، بالفستق، بالبندق وباللوز.',
     gallery: [
-      { title: 'طعم غني', note: 'قوام كريمي وطعم شوكولاتة واضح' },
-      { title: 'مكونات أخف', note: 'مناسب للاستخدام اليومي بدون سكر مضاف' },
-      { title: 'سناك سريع', note: 'ينفع مع الفطار أو بين الوجبات' },
-      { title: 'اختيار صحي', note: 'مناسب لأسلوب حياة أخف' },
-      { title: 'بريستيج', note: 'نكهة فاخرة وغنية ببندق أكتر' },
-      { title: 'جوز هند', note: 'نكهة جوز هند استوائية منعشة' },
-      { title: 'زبدة فول سوداني', note: 'نكهة فول سوداني غنية بدون سكر مضاف' },
-      { title: 'زبدة فول سوداني عالي البروتين', note: 'مثالي للرياضيين ومحبي البروتين' },
-      { title: 'زبدة فول سوداني شيكولاتة', note: 'مزيج مثالي من فول السوداني والشوكولاتة' },
+      { title: 'سادة', note: 'طعم الحلاوة الأصلي' },
+      { title: 'بالشيكولاتة', note: 'حلاوة وشيكولاتة مع بعض' },
+      { title: 'بالفستق', note: 'قطع فستق' },
+      { title: 'بالمكسرات', note: 'بندق ولوز' },
     ],
   },
   offersIntro: {
     eyebrow: 'اختار العرض المناسب ليك 👇',
     title: 'الحق العروض قبل ما تخلص',
-    description: 'كل العروض شاملة الدفع عند الاستلام 💳 + التوصيل مجاناً 🚚',
+    description: 'كل العروض شاملة الدفع عند الاستلام 💳',
   },
+  // Fallback only: the live offers come from the «الحلاوة سبريد» tab in the dashboard.
   offers: [
-    {
-      id: 'two-jars',
-      title: 'العرض الأول',
-      amount: 'عرض القطعتين ب 499 جنيه بدلاً من 600 جنيه',
-      description: '',
-      price: 499,
-      originalPrice: 600,
-      saving: 101,
-      unitsPerPack: 2,
-      maxFlavors: 9,
-      badge: 'توفير 🔥',
-      accent: '#5f2d91',
-      note: '',
-    },
-    {
-      id: 'three-jars',
-      title: 'العرض الثاني',
-      amount: 'عرض ال 3 قطع ب 699 جنيه بدلاً من 900 جنيه',
-      description: '',
-      price: 699,
-      originalPrice: 900,
-      saving: 201,
-      unitsPerPack: 3,
-      maxFlavors: 9,
-      badge: '⭐ الأكثر طلبًا',
-      accent: '#b11730',
-      note: '',
-    },
-    {
-      id: 'four-jars',
-      title: 'العرض الثالث',
-      amount: 'عرض ال 4 قطع ب 899 جنيه بدلاً من 1200 جنيه',
-      description: '',
-      price: 899,
-      originalPrice: 1200,
-      saving: 301,
-      unitsPerPack: 4,
-      maxFlavors: 9,
-      badge: 'أكبر توفير 🔥',
-      accent: '#0f766e',
-      note: '',
-    },
-    {
-      id: 'choco-bar',
-      title: 'عرض شيكولاتة بار',
-      amount: 'اشتري 4 شيكولاتة 40 جرام واحصل على الخامسة هدية ب 220 جنيه بدلاً من 275 جنيه',
-      description: '',
-      price: 220,
-      originalPrice: 275,
-      saving: 55,
-      badge: '🎁 الخامسة هدية',
-      accent: '#b11730',
-      note: '',
-      configuration: { type: 'chocoBar', total: 5 },
-    },
-    {
-      id: 'spread-choco-bar',
-      title: 'عرض سبريد + شيكولاتة بار',
-      amount: 'اشتري 2 شيكولاتة سبريد + 2 شيكولاتة بار ب 599 جنيه بدلاً من 710 جنيه',
-      description: '',
-      price: 599,
-      originalPrice: 710,
-      saving: 111,
-      unitsPerPack: 2,
-      maxFlavors: 9,
-      badge: '✨ عرض مميز',
-      accent: '#5f2d91',
-      note: '',
-      configuration: { type: 'spreadAndChocoBar', spreadUnits: 2, chocoBarUnits: 2 },
-    },
+    { id: 'four-bars', title: 'عرض 4 حلاوة سبريد', amount: '4 برطمانات Healthy Halawa Spread — اختار النكهات اللي تحبها', description: '', price: 140, originalPrice: 160, saving: 20, unitsPerPack: 4, maxFlavors: 9, badge: '🍯 جرّب كل النكهات', accent: '#C2410C', note: '' },
+    { id: 'eight-bars', title: 'عرض 8 حلاوة سبريد', amount: '8 برطمانات Healthy Halawa Spread — وزّعهم على النكهات براحتك', description: '', price: 260, originalPrice: 320, saving: 60, unitsPerPack: 8, maxFlavors: 9, badge: '🔥 الأكثر طلبًا', accent: '#B45309', note: '' },
+    { id: 'twelve-bars', title: 'عرض 12 حلاوة سبريد', amount: '12 برطمان Healthy Halawa Spread — أوفر عرض للعيلة', description: '', price: 370, originalPrice: 480, saving: 110, unitsPerPack: 12, maxFlavors: 9, badge: '⭐ أكبر توفير', accent: '#92400E', note: '' },
   ],
   loveReasons: {
-    eyebrow: 'ليه العملاء بيحبوا Healthy Spread؟',
-    title: 'لأنها بتديك الطعم اللي بتحبه بشكل أخف',
+    eyebrow: 'ليه العملاء بيحبوا Healthy Halawa Spread؟',
+    title: 'لأنها بتديك طعم الحلاوة اللي بتحبه بشكل أخف',
     items: [
-      { label: 'طعم حلو من غير إحساس بالذنب',              icon: '😍' },
-      { label: 'اختيار يناسب أسلوب الحياة الصحي',           icon: '🌿' },
-      { label: 'مكونات أخف وأنسب للاستخدام اليومي',         icon: '✅' },
-      { label: 'حل مثالي للحلويات والسناك الصحية',           icon: '🍽️' },
+      { label: 'طعم حلو من غير إحساس بالذنب', icon: '😍' },
+      { label: 'سهلة الدهن في الفطار والسناك',  icon: '🍞' },
+      { label: 'نكهات كتير تختار منها',       icon: '🍯' },
+      { label: 'بدون سكر مضاف',               icon: '✅' },
     ],
   },
   form: {
@@ -225,7 +136,7 @@ export const landingData = {
     validationMessage: 'من فضلك املأ كل الحقول المطلوبة بشكل صحيح.',
   },
   footer: {
-    note: 'Healthy Spread بطعم غني يناسب حياتك الصحية.',
+    note: 'Healthy Halawa Spread — حلاوة طحينية صحية قابلة للدهن بدون سكر مضاف.',
   },
 };
 

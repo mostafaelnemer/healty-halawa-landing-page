@@ -14,6 +14,7 @@ import {
   cartToCheckoutItems,
 } from '../utils/cartState.js';
 import { trackMetaEvent, metaParamsFromOffer, metaParamsFromItems } from '../utils/metaPixel.js';
+import { SITE, PRODUCT } from '../site.js';
 
 export default function OffersSection({ intro, offers, offersReady, onCheckout, initialCart = {} }) {
   const content = usePageContent();
@@ -24,10 +25,12 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
   // نص بانر الشيكولاتة يتبني من أسعار العروض نفسها — عشان ما يتعارضش مع كروت العروض
   const chocoBarOffer = offers.find((o) => o.configuration?.type === 'chocoBar');
   const spreadChocoOffer = offers.find((o) => o.configuration?.type === 'spreadAndChocoBar');
+  // The "new choco bar" teaser only makes sense when the page also sells other products.
+  const hasOtherProducts = offers.some((o) => !['chocoBar', 'spreadAndChocoBar'].includes(o.configuration?.type));
   const cartCount = availableOffers.reduce((sum, offer) => sum + (cart[offer.id] || 0), 0);
   const subtotal = getCartSubtotal(cart, availableOffers);
   const checkoutItems = cartToCheckoutItems(cart, availableOffers);
-  const { fee: shipping, deferred } = cartShipping(checkoutItems, 'spread');
+  const { fee: shipping, deferred } = cartShipping(checkoutItems, SITE);
   const grandTotal = subtotal + shipping;
 
   useEffect(() => {
@@ -94,11 +97,11 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
         <div className="section-intro light centered">
           <span className="eyebrow">{intro.eyebrow}</span>
           <h2>{intro.title}</h2>
-          <p>{shippingSummary(offers, 'spread')} · الدفع عند الاستلام 💳</p>
+          <p>{shippingSummary(offers, SITE)} · الدفع عند الاستلام 💳</p>
           <CountdownTimer />
         </div>
 
-        {(chocoBarOffer || spreadChocoOffer) && <a href="#choco-offers" className="choco-teaser-banner">
+        {hasOtherProducts && (chocoBarOffer || spreadChocoOffer) && <a href="#choco-offers" className="choco-teaser-banner">
           <span className="choco-teaser-new">جديد 🆕</span>
           <span className="choco-teaser-text">
             {chocoBarOffer
@@ -119,6 +122,7 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
               offer.configuration?.type === 'spreadAndChocoBar';
             const prevOffer = offers[index - 1];
             const isFirstChoco =
+              index > 0 &&
               isChocoOffer &&
               prevOffer?.configuration?.type !== 'chocoBar' &&
               prevOffer?.configuration?.type !== 'spreadAndChocoBar';
@@ -166,17 +170,17 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
                   </div>
                   {offer.configuration?.type === 'components' ? (
                     <p className="bundle-row-meta">
-                      {shippingLabel(offer, 'spread') ? `${shippingLabel(offer, 'spread')} · ` : ''}
+                      {shippingLabel(offer, SITE) ? `${shippingLabel(offer, SITE)} · ` : ''}
                       {offer.components.filter((component) => component.choose > 0).map((component) => component.label).join(' + ') || 'مكوّنات ثابتة'}
                     </p>
                   ) : offer.configuration?.type === 'bundle' ? (
-                    <p className="bundle-row-meta">{shippingLabel(offer, 'spread') ? `${shippingLabel(offer, 'spread')} · ` : ''}⚖️ 375 جرام لكل برطمان · 🥤 350 مل لكل زجاجة كولا</p>
+                    <p className="bundle-row-meta">{shippingLabel(offer, SITE) ? `${shippingLabel(offer, SITE)} · ` : ''}⚖️ 375 جرام لكل برطمان · 🥤 350 مل لكل زجاجة كولا</p>
                   ) : offer.configuration?.type === 'chocoBar' ? (
-                    <p className="bundle-row-meta">{shippingLabel(offer, 'spread') ? `${shippingLabel(offer, 'spread')} · ` : ''}⚖️ 40 جرام للقطعة</p>
+                    <p className="bundle-row-meta">{[shippingLabel(offer, SITE), offer.weightNote || PRODUCT.weightNote].filter(Boolean).join(' · ')}</p>
                   ) : offer.configuration?.type === 'spreadAndChocoBar' ? (
-                    <p className="bundle-row-meta">{shippingLabel(offer, 'spread') ? `${shippingLabel(offer, 'spread')} · ` : ''}⚖️ 375 جرام للسبريد · ⚖️ 40 جرام للشيكولاتة بار</p>
+                    <p className="bundle-row-meta">{[shippingLabel(offer, SITE), offer.weightNote || PRODUCT.weightNote].filter(Boolean).join(' · ')}</p>
                   ) : (
-                    <p className="bundle-row-meta">{shippingLabel(offer, 'spread') ? `${shippingLabel(offer, 'spread')} · ` : ''}⚖️ 375 جرام لكل برطمان</p>
+                    <p className="bundle-row-meta">{[shippingLabel(offer, SITE), offer.weightNote || PRODUCT.weightNote].filter(Boolean).join(' · ')}</p>
                   )}
 
                   {inCart ? (
@@ -219,7 +223,7 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
         </div>
 
         <div className="trust-pills">
-          <span>{shippingSummary(offers, 'spread')}</span>
+          <span>{shippingSummary(offers, SITE)}</span>
           <span>💳 الدفع عند الاستلام</span>
           <span>🌿 بدون سكر مضاف</span>
         </div>
@@ -234,7 +238,7 @@ export default function OffersSection({ intro, offers, offersReady, onCheckout, 
               {!deferred && (
                 <div className="checkout-summary-row">
                   <span>🚚 الشحن</span>
-                  <span>{cartShippingLabel(checkoutItems, 'spread')}</span>
+                  <span>{cartShippingLabel(checkoutItems, SITE)}</span>
                 </div>
               )}
               <div className="checkout-summary-row checkout-summary-total">

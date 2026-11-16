@@ -1,4 +1,5 @@
 import { cartShipping } from '../shipping.js';
+import { SITE } from '../site.js';
 
 export function incrementCartItem(cart, offerId) {
   return { ...cart, [offerId]: (cart[offerId] || 0) + 1 };
@@ -28,7 +29,7 @@ export function getGrandTotal(cart, offers, shippingFee) {
 }
 
 export function getItemsShipping(items) {
-  return cartShipping(items, 'spread').fee;
+  return cartShipping(items, SITE).fee;
 }
 
 export function cartToCheckoutItems(cart, offers) {
